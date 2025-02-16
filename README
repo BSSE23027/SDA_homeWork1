@@ -1,0 +1,43 @@
+# Execution Steps and Strategy Pattern Concepts
+
+## Execution Steps
+
+1. **Compile the Java Files**
+   - Open a terminal or command prompt and navigate to the project directory.
+   - Compile all Java files using:
+     javac *.java
+
+2. **Run the Program**
+   - Execute the `MiniDuckSimulator` class:
+     java MiniDuckSimulator
+
+3. **Observe the Output**
+   - The program will display the initial behavior of different duck types.
+   - It will then modify the behavior of `RubberDuck` at runtime, demonstrating the Strategy Pattern.
+
+## Strategy Pattern Concepts in the Program
+
+### 1. **Encapsulation of Behaviors**
+   - Instead of defining flying and quacking behaviors inside the `Duck` class, the program encapsulates them using interfaces (`FlyBehaviour` and `QuackBehaviour`).
+   - This allows flexibility in assigning behaviors dynamically.
+
+### 2. **Composition Over Inheritance**
+   - The `Duck` class has two instance variables: `flyBehaviour` and `quackBehaviour`, which are instances of interfaces.
+   - This follows the composition principle, making it easy to change behaviors at runtime.
+
+### 3. **Runtime Behavior Modification**
+   - Ducks can change their behaviors dynamically using:
+
+     rubberDuck.quackBehaviour = new MuteQuack();
+     rubberDuck.flyBehaviour = new FlyWithWings();
+
+   - This demonstrates how the Strategy Pattern enables flexible behavior modification without modifying the existing code.
+
+### 4. **Implementation in Classes**
+   - `FlyBehaviour` and `QuackBehaviour` interfaces define the strategies.
+   - `FlyWithWings`, `FlyNoWay`, `Quack`, `MuteQuack`, and `Squeak` provide concrete implementations of behaviors.
+   - `MallardDuck`, `RubberDuck`, `RedHeadDuck`, and `DecoyDuck` extend `Duck` and assign specific behaviors.
+   - `MiniDuckSimulator` runs the program and demonstrates strategy switching.
+
+This approach makes the code more flexible, maintainable, and scalable while adhering to the Strategy Pattern principles.
+
