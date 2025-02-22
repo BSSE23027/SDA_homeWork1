@@ -1,0 +1,53 @@
+Steps to Run the Program
+
+Compile the Java Files
+
+Open a terminal or command prompt and navigate to the project directory.
+
+Compile all Java files using:
+
+    javac *.java
+
+Run the Program
+
+Execute the WeatherStation class:
+
+    java WeatherStation
+
+Observe the Output
+
+The program will display weather updates through multiple display elements.
+
+Each observer (CurrentConditionsDisplay, StatisticsDisplay, ForecastDisplay) updates dynamically when new measurements are set.
+
+Observer Pattern Concepts in the Program
+
+1. Subject-Observer Relationship
+
+WeatherData (Subject) maintains a list of observers and notifies them when data changes.
+Observers (CurrentConditionsDisplay, StatisticsDisplay, ForecastDisplay) register themselves with WeatherData and receive updates dynamically.
+
+2. Encapsulation of Behavior
+
+Instead of polling for changes, Observers receive automatic updates using the update method.
+This promotes a loosely coupled design, allowing new Observers to be added without modifying WeatherData.
+
+3. Runtime Behavior Modification
+
+The Weather Station dynamically updates the weather conditions using:
+
+weatherData.setMeasurements(80.1f, 65.3f, 30.4f);
+
+As soon as new measurements are set, all registered observers are notified and display updated values.
+
+4. Implementation in Classes
+
+Observer interface defines the update method for all observers.
+
+Subject interface provides methods for registering, removing, and notifying observers.
+
+WeatherData class implements Subject and stores the weather data.
+
+CurrentConditionsDisplay, StatisticsDisplay, and ForecastDisplay implement Observer and update their displays when notified.
+
+WeatherStation class initializes the system and demonstrates how the Observer Pattern works in real-time.

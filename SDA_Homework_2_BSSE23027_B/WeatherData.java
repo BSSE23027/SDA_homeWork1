@@ -1,31 +1,35 @@
 import java.util.ArrayList;
+// Subject implementation that maintains observers and notifies them
 public class WeatherData implements Subject {
-  private ArrayList observers;
+  private ArrayList<Observer> observers;
   private Float temperature;
   private Float humidity;
   private Float pressure;
-  
+
   public WeatherData(){
-    observers = new ArrayList();
+    observers = new ArrayList<>();
   }
+
   public void registerObserver(Observer o){
     observers.add(o);
   }
+
   public void removeObserver(Observer o){
-    int i = observers.indexOf(o);
-    if (i >= 0){
-      observers.remove(i);
-    }
+    observers.remove(o);
   }
+
   public void notifyObservers(){
     for(int i = 0; i < observers.size(); i++){
-      Observer observer = (Observer)observers.get(i);
-      observer.update(temperature, humidity, pressure);
+        Observer observer = (Observer)observers.get(i);
+        observer.update(temperature, humidity, pressure);
     }
   }
+
+  // Called when weather data changes
   public void measurementsChanged(){
     notifyObservers();
   }
+// After measurements are set then measurementsChanged() is called and registered observers are notified
   public void setMeasurements(Float temp, Float humidity, Float pressure){
     this.temperature = temp;
     this.humidity = humidity;
